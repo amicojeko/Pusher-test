@@ -1,0 +1,137 @@
+<script src="<%= source(@version, 'pusher.js', @ssl) %>"></script>
+
+<p><em>This page uses Pusher javascript version <%= @version %> over <%= @ssl ? 'wss' : 'ws' %>.</em></p>
+
+<% if @version >= '1.7.0' %>
+  <% if @ssl %>
+    <p><a href="?">Switch to ws</a></p>
+  <% else %>
+    <p><a href="?ssl=true">Switch to wss</a></p>
+  <% end %>
+<% end %>
+
+<p>It tries to connect to channel 'channel' and listens on event 'event' for messages. These files are included in the version:</p>
+
+<% files(@version).each do |file| %>
+  <li><a href="<%= source(@version, file, @ssl) %>"><%= file %></a></li>
+<% end %>
+
+<p>
+  Connection status: <strong><span id="status">unloaded</span></strong>
+  <a href="#" id="connect">Connect</a>
+  <a href="#" id="disconnect">Disconnect</a>
+</p>
+
+<p><a href="/hello" class="ajax">Say hello</a></p>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('.ajax').click(function() {
+      $.post(this.href);
+      return false;
+    })
+    
+    var status = function(st) {
+      $('#status').text(st);
+    }
+
+    $('#connect').click(function() {
+      pusher.connect();
+      return false;
+    });
+
+    $('#disconnect').click(function() {
+      pusher.disconnect();
+      return false;
+    });
+
+    var print_message = function(msg) {
+      $('#messages').append("<li>"+msg+"</li>");
+    }
+    
+    <% if @version < "1.5.0" %>
+    WebSocket.__swfLocation = "/WebSocketMain.swf";
+    <% end %>
+    
+    Pusher.log = function() {
+      if (window.console && window.console.log.apply) {
+        window.console.log.apply(window.console, arguments);
+      }
+
+      var args = Array.prototype.slice.call(arguments);
+      $('#debug-console').append(args.join(' ') + "\r\n")
+    };
+
+    // Not usually required - used for debugging on multiple environments
+    Pusher.host = "<%= Pusher.ws_host || "ws.pusherapp.com" %>";
+    Pusher.ws_port = <%= Pusher.ws_port || 80 %>;
+    Pusher.wss_port = <%= Pusher.wss_port || 443 %>;
+
+    // Flash fallback logging
+    WEB_SOCKET_DEBUG = true;
+    
+    <% if @version >= '1.7.0' && @ssl %>
+    pusher = new Pusher('<%= Pusher.key %>', {
+      encrypted: true
+    });
+    channel = pusher.subscribe('channel');
+    channel.bind("event", function(data) {
+      print_message(data);
+    });
+    channel.bind('alert', function(data) {
+      alert(data);
+    });
+    <% elsif @version >= '1.4.0' %>
+    pusher = new Pusher('<%= Pusher.key %>');
+    channel = pusher.subscribe('channel');
+    channel.bind("event", function(data) {
+      print_message(data);
+    });
+    channel.bind('alert', function(data) {
+      alert(data);
+    });
+    <% else %>
+    pusher = new Pusher('<%= Pusher.key %>', 'channel');
+    pusher.bind("event", function(data) {
+      print_message(data);
+    });
+    pusher.bind('alert', function(data) {
+      alert(data);
+    });
+    <% end %>
+    
+    <% if @version < '1.9.0' %>
+      status('connecting');
+
+      pusher.bind("pusher:connection_established", function() {
+        status('connected');
+      })
+      pusher.bind("connection_established", function() {
+        status('connected');
+      })
+
+      pusher.bind("pusher:connection_failed", function() {
+        status('disconnected')
+      })
+      pusher.bind("connection_failed", function() {
+        status('disconnected')
+      })
+    <% else %>
+      pusher.connection.bind('state_change', function(state) {
+        status(state.current)
+      })
+    <% end %>
+  })
+</script>
+
+<h2>Messages</h2>
+
+<ul id="messages">
+  
+</ul>
+
+<h2>Debug console</h2>
+
+<p><small>Also logged to javascript debug console, if available.</small></p>
+
+<pre id="debug-console"></pre>
