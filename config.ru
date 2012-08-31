@@ -1,7 +1,4 @@
-$:.push(File.expand_path('..', __FILE__))
+# This file is used by Rack-based servers to start the application.
 
-require 'app'
-
-use Rack::Static, :urls => ['/WebSocketMain.swf'], :root => "public"
-
-run Sinatra::Application
+require ::File.expand_path('../config/environment',  __FILE__)
+run PusherPresenceDemo::Application

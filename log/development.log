@@ -1,0 +1,193 @@
+
+
+Started GET "/" for 127.0.0.1 at 2012-08-30 16:27:11 +0200
+  Processing by DemoController#index as HTML
+Rendered demo/index.html.erb within layouts/application (29.0ms)
+Compiled application.css  (39ms)  (pid 9914)
+Compiled application.js  (23ms)  (pid 9914)
+Compiled typer.js  (26ms)  (pid 9914)
+Completed 200 OK in 635ms (Views: 634.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-08-30 16:27:15 +0200
+Served asset /application.css - 200 OK (0ms)
+
+
+Started GET "/assets/typer.js?body=1" for 127.0.0.1 at 2012-08-30 16:27:15 +0200
+Served asset /typer.js - 200 OK (240ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-08-30 16:27:15 +0200
+Served asset /application.js - 200 OK (0ms)
+
+
+Started POST "/identity" for 127.0.0.1 at 2012-08-30 16:27:24 +0200
+  Processing by IdentitiesController#create as HTML
+  Parameters: {"email"=>"stefano@interact.it"}
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms
+
+
+Started GET "/" for 127.0.0.1 at 2012-08-30 16:27:24 +0200
+  Processing by DemoController#index as HTML
+Rendered demo/index.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 7ms (Views: 6.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/messages" for 127.0.0.1 at 2012-08-30 16:27:31 +0200
+  Processing by MessagesController#create as */*
+  Parameters: {"text"=>"yo"}
+Completed 500 Internal Server Error in 0ms
+
+Pusher::ConfigurationError (Missing configuration: please check that Pusher.key, Pusher.secret and Pusher.app_id are configured.):
+  app/controllers/messages_controller.rb:11:in `create'
+
+Rendered /Users/jeko/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+Rendered /Users/jeko/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.2ms)
+Rendered /Users/jeko/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (5.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-08-30 16:34:34 +0200
+  Processing by DemoController#index as HTML
+Rendered demo/index.html.erb within layouts/application (4.1ms)
+Completed 200 OK in 25ms (Views: 24.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-08-30 16:34:35 +0200
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/typer.js?body=1" for 127.0.0.1 at 2012-08-30 16:34:35 +0200
+Served asset /typer.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-08-30 16:34:35 +0200
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started POST "/pusher/auth" for 127.0.0.1 at 2012-08-30 16:34:35 +0200
+  Processing by PusherController#auth as */*
+  Parameters: {"socket_id"=>"11726.140678", "channel_name"=>"presence-demo"}
+Completed 200 OK in 53ms (Views: 11.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-08-30 16:34:36 +0200
+  Processing by DemoController#index as HTML
+Rendered demo/index.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 10ms (Views: 9.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-08-30 16:34:36 +0200
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/typer.js?body=1" for 127.0.0.1 at 2012-08-30 16:34:36 +0200
+Served asset /typer.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-08-30 16:34:36 +0200
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started POST "/pusher/auth" for 127.0.0.1 at 2012-08-30 16:34:37 +0200
+  Processing by PusherController#auth as */*
+  Parameters: {"socket_id"=>"11737.140245", "channel_name"=>"presence-demo"}
+Completed 200 OK in 8ms (Views: 7.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/messages" for 127.0.0.1 at 2012-08-30 16:34:41 +0200
+  Processing by MessagesController#create as */*
+  Parameters: {"text"=>"palla"}
+Completed 200 OK in 592ms
+
+
+Started POST "/messages" for 127.0.0.1 at 2012-08-30 16:36:58 +0200
+  Processing by MessagesController#create as */*
+  Parameters: {"text"=>"palla"}
+Completed 200 OK in 764ms
+
+
+Started POST "/messages" for 127.0.0.1 at 2012-08-30 16:38:36 +0200
+  Processing by MessagesController#create as */*
+  Parameters: {"text"=>"yo"}
+Completed 200 OK in 1549ms
+
+
+Started POST "/messages" for 127.0.0.1 at 2012-08-30 16:38:45 +0200
+  Processing by MessagesController#create as */*
+  Parameters: {"text"=>"dsfgh"}
+Completed 200 OK in 768ms
+
+
+Started DELETE "/identity" for 127.0.0.1 at 2012-08-30 16:38:54 +0200
+  Processing by IdentitiesController#destroy as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3TRAHnvMhmCWO9gNdYJomBU0RZu+9NrR5qTTdqcO8X8=", "commit"=>"Remove my Gravatar"}
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms
+
+
+Started GET "/" for 127.0.0.1 at 2012-08-30 16:38:55 +0200
+  Processing by DemoController#index as HTML
+Rendered demo/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 8ms (Views: 7.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-08-30 16:38:55 +0200
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/typer.js?body=1" for 127.0.0.1 at 2012-08-30 16:38:55 +0200
+Served asset /typer.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-08-30 16:38:55 +0200
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started POST "/pusher/auth" for 127.0.0.1 at 2012-08-30 16:38:55 +0200
+  Processing by PusherController#auth as */*
+  Parameters: {"socket_id"=>"11745.140584", "channel_name"=>"presence-demo"}
+Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/messages" for 127.0.0.1 at 2012-08-30 16:38:58 +0200
+  Processing by MessagesController#create as */*
+  Parameters: {"text"=>"fgfdgfd"}
+Completed 200 OK in 1611ms
+
+
+Started POST "/identity" for 127.0.0.1 at 2012-08-30 16:39:17 +0200
+  Processing by IdentitiesController#create as HTML
+  Parameters: {"email"=>"stefano@interact.it"}
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms
+
+
+Started GET "/" for 127.0.0.1 at 2012-08-30 16:39:17 +0200
+  Processing by DemoController#index as HTML
+Rendered demo/index.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 10ms (Views: 9.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-08-30 16:39:17 +0200
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/typer.js?body=1" for 127.0.0.1 at 2012-08-30 16:39:17 +0200
+Served asset /typer.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-08-30 16:39:17 +0200
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started POST "/pusher/auth" for 127.0.0.1 at 2012-08-30 16:39:17 +0200
+  Processing by PusherController#auth as */*
+  Parameters: {"socket_id"=>"11746.140574", "channel_name"=>"presence-demo"}
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/messages" for 127.0.0.1 at 2012-08-30 16:39:19 +0200
+  Processing by MessagesController#create as */*
+  Parameters: {"text"=>"dsf"}
+Completed 200 OK in 913ms
